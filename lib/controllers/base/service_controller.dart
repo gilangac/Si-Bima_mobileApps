@@ -1,3 +1,7 @@
+// ignore_for_file: unused_field
+
+import 'dart:developer';
+
 import 'package:si_bima/helpers/dialog_helper.dart';
 import 'package:si_bima/services/service_exception.dart';
 import 'package:get/get.dart';
@@ -9,6 +13,7 @@ class ServiceController {
 
       var message = error.message;
       var url = error.url;
+      log('error $message', name: 'STATUS ERROR');
 
       if (url == '/jail') {
         print(message);

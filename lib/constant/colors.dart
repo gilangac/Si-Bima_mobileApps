@@ -9,6 +9,8 @@ class AppColors {
 
   // multipurpose colors
   static final yellow = Color(0xFFFFC700);
+  static final green = Color(0xFF5FC790);
+  static final red = Color(0xFFFF5630);
   static final blue = Color(0xFF5BBFFA);
   static final black = Color(0xFF18172B);
   static final grey = Color(0xFF686868);

@@ -1,3 +1,4 @@
+import 'package:si_bima/helpers/snackbar_helper.dart';
 import 'package:si_bima/services/service_exception.dart';
 import 'package:dio/dio.dart';
 
@@ -25,6 +26,8 @@ dynamic handleResponse(Response response) {
           response.requestOptions.path);
 
     case 500:
+      SnackBarHelper.showError(
+          description: "Maaf, server kami sedang dalam perbaikan");
       throw UnauthorizedException('Maaf, server kami sedang dalam perbaikan',
           response.requestOptions.path);
 
@@ -64,8 +67,7 @@ dynamic handleError(DioError response) {
             response.requestOptions.path);
       } else {
         throw BadRequestException(
-            'Received invalid status code: ${response.response?.statusCode}',
-            response.requestOptions.path);
+            '${response.response?.statusCode}', response.requestOptions.path);
       }
 
     default:

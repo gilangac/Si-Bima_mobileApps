@@ -12,8 +12,7 @@ class ServiceProvider {
     }
   }
 
-  static Future<dynamic> postData(String path,
-      {Map? data}) async {
+  static Future<dynamic> postData(String path, {Map? data}) async {
     try {
       Response response = await apiCall().post(path, data: data);
       return handleResponse(response);
@@ -23,8 +22,7 @@ class ServiceProvider {
   }
 
   static Future<dynamic> postDataFile(String path,
-      {FormData? data,
-      void Function(int, int)? onSendProgress}) async {
+      {FormData? data, void Function(int, int)? onSendProgress}) async {
     try {
       Response response = await apiCall()
           .post(path, data: data, onSendProgress: onSendProgress);
@@ -34,8 +32,7 @@ class ServiceProvider {
     }
   }
 
-  static Future<dynamic> putData(String path,
-      {Map? data}) async {
+  static Future<dynamic> putData(String path, {Map? data}) async {
     try {
       Response response = await apiCall().put(path, data: data);
       return handleResponse(response);
@@ -44,8 +41,7 @@ class ServiceProvider {
     }
   }
 
-  static Future<dynamic> putDataFile(String path,
-      {FormData? data}) async {
+  static Future<dynamic> putDataFile(String path, {FormData? data}) async {
     try {
       Response response = await apiCall().put(path, data: data);
       return handleResponse(response);
@@ -54,8 +50,7 @@ class ServiceProvider {
     }
   }
 
-  static Future<dynamic> deleteData(String path,
-      {Map? data}) async {
+  static Future<dynamic> deleteData(String path, {Map? data}) async {
     try {
       Response response = await apiCall().delete(path);
       return handleResponse(response);

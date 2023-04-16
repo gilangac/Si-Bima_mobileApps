@@ -8,5 +8,6 @@ class AppRoutes {
     GetPage(name: _Paths.HOME, page: () => HomeScreen()),
     GetPage(name: _Paths.DETAIL_INFO, page: () => DetailInfoScreen()),
     GetPage(name: _Paths.ONBOARDING, page: () => OnBoardScreen()),
+    GetPage(name: _Paths.PRESENSI, page: () => PresensiScreen()),
   ];
 }

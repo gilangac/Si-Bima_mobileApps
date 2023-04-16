@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:si_bima/constant/colors.dart';
 import 'package:si_bima/controllers/home/home_controller.dart';
@@ -87,7 +89,8 @@ class HomeScreen extends StatelessWidget {
             slivers: <Widget>[
               SliverPersistentHeader(
                 delegate: _DelegateClass(),
-                pinned: true,
+                pinned: false,
+                floating: true,
               ),
               SliverList(
                 delegate: SliverChildBuilderDelegate(
@@ -97,7 +100,9 @@ class HomeScreen extends StatelessWidget {
                             ? homeController.searchResult.length > 0
                                 ? DataCard(
                                     data: Person.fromJson(
-                                        homeController.searchResult[index]))
+                                        homeController.searchResult[index]),
+                                    isViewOnly: false,
+                                  )
                                 : Scrollbar(
                                     child: SingleChildScrollView(
                                       child: Padding(

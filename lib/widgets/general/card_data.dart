@@ -1,25 +1,30 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:si_bima/models/person.dart';
 import 'package:si_bima/routes/pages.dart';
 import 'package:si_bima/widgets/general/circle_avatar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 
 class DataCard extends StatelessWidget {
   Person data;
-  DataCard({Key? key, required this.data}) : super(key: key);
+  bool? isViewOnly;
+  DataCard({Key? key, required this.data, this.isViewOnly = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!isViewOnly!) {
+          FocusScopeNode currentFocus = FocusScope.of(context);
 
-        if (!currentFocus.hasPrimaryFocus) {
-          currentFocus.unfocus();
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.unfocus();
+          }
+          Get.toNamed(AppPages.DETAIL_INFO, arguments: data);
         }
-        Get.toNamed(AppPages.DETAIL_INFO, arguments: data);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -48,21 +53,24 @@ class DataCard extends StatelessWidget {
                 ],
               ),
             ),
-            Positioned(
-              bottom: 10,
-              right: 5,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                child: Text(
-                  'Detail...',
-                  style: GoogleFonts.poppins(
-                      color: Colors.black54,
-                      fontSize: 12,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w400),
-                ),
-              ),
-            )
+            isViewOnly!
+                ? SizedBox()
+                : Positioned(
+                    bottom: 10,
+                    right: 5,
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                      child: Text(
+                        'Detail...',
+                        style: GoogleFonts.poppins(
+                            color: Colors.black54,
+                            fontSize: 12,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ),
+                  )
           ],
         ),
       ),
@@ -73,7 +81,7 @@ class DataCard extends StatelessWidget {
     return Hero(
         transitionOnUserGestures: true,
         tag: "image" + data.id.toString(),
-        child: circleAvatar(imageData: "", nameData: data.name, size: 30));
+        child: circleAvatar(imageData: "", nameData: data.name ?? '', size: 30));
   }
 
   Widget _content() {
@@ -85,7 +93,7 @@ class DataCard extends StatelessWidget {
           Hero(
             tag: "name" + data.id.toString(),
             transitionOnUserGestures: true,
-            child: Text(data.name,
+            child: Text(data.name ?? '',
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
                 textAlign: TextAlign.start,
@@ -97,7 +105,7 @@ class DataCard extends StatelessWidget {
           Hero(
             tag: "jail" + data.id.toString(),
             transitionOnUserGestures: true,
-            child: Text(data.jail.name,
+            child: Text(data.jail!.name,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
                 textAlign: TextAlign.start,

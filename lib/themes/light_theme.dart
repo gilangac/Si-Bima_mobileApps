@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:si_bima/constant/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,6 +10,7 @@ ThemeData lightTheme(BuildContext context) {
     primaryColor: Colors.white,
     primaryColorBrightness: Brightness.light,
     brightness: Brightness.light,
+    androidOverscrollIndicator: AndroidOverscrollIndicator.stretch,
     // scaffoldBackgroundColor: AppColors.backgroundColor,
     colorScheme: ColorScheme.light().copyWith(primary: AppColors.primaryColor),
     splashColor: (GetPlatform.isIOS)

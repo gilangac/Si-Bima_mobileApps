@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 import 'dart:io';
 import 'package:si_bima/controllers/base/service_controller.dart';
@@ -66,9 +68,9 @@ class HomeController extends GetxController with ServiceController {
       try {
         var response = typeText.value != ''
             ? await ServiceProvider.getData(
-                    '/type=' + typeText.value + '&name=' + searchFC.text)
+                    '?type=' + typeText.value + '&name=' + searchFC.text)
                 .catchError(handleError)
-            : await ServiceProvider.getData('/type=&name=' + searchFC.text)
+            : await ServiceProvider.getData('?type=&name=' + searchFC.text)
                 .catchError(handleError);
 
         if (response == null) return;

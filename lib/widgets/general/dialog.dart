@@ -22,8 +22,8 @@ Widget dialogInfo() {
             textAlign: TextAlign.center,
           ),
           _separator(),
-          _listaddress("web_vector.svg", "www.bapasmadiun.com",
-              url: "https://www.bapasmadiun.com"),
+          _listaddress("web_vector.svg", "bapasmadiun.kemenkumham.go.id/",
+              url: "https://bapasmadiun.kemenkumham.go.id/"),
           _listaddress("ig_vector.svg", "@bapasmadiun",
               url: "https://www.instagram.com/bapasmadiun/"),
           _listaddress("twitter_vector.svg", "@MadiunBapas",
@@ -41,7 +41,7 @@ Widget dialogInfo() {
                   style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w600, fontSize: 14)),
               Spacer(),
-              Text("1.0")
+              Text("1.2")
             ],
           )
         ],
@@ -72,10 +72,12 @@ Widget _listaddress(String svg, String address, {String? url}) {
           SizedBox(
             width: 10,
           ),
-          Text(address,
-              overflow: TextOverflow.ellipsis,
-              style: GoogleFonts.poppins(
-                  color: Colors.black, fontWeight: FontWeight.w400))
+          Expanded(
+            child: Text(address,
+                overflow: TextOverflow.ellipsis,
+                style: GoogleFonts.poppins(
+                    color: Colors.black, fontWeight: FontWeight.w400)),
+          )
         ],
       ),
     ),

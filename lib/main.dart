@@ -9,8 +9,8 @@ import 'package:get/get.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setEnabledSystemUIOverlays(
-      [SystemUiOverlay.bottom, SystemUiOverlay.top]);
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+      overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]);
   await PreferenceService.init();
   runApp(MyApp());
 }

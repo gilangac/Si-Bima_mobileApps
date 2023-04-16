@@ -1,14 +1,14 @@
 import 'package:si_bima/models/jail.dart';
 
 class Person {
-  int id;
-  String name;
-  int idJail;
+  int? id;
+  String? name;
+  String? idJail;
   String? personCase;
-  int idPk;
-  int idType;
+  String? idPk;
+  String? idType;
   String? dateDisposition;
-  int numberTpp;
+  String? numberTpp;
   String? dateTpp;
   String? dateSend;
   String? dateStart;
@@ -17,19 +17,21 @@ class Person {
   String? description;
   String? createdAt;
   String? updatedAt;
-  Jail jail;
-  Jail type;
-  Jail pk;
+  bool? isAbsen;
+  String? birthday;
+  Jail? jail;
+  Jail? type;
+  Jail? pk;
 
   Person({
-    required this.id,
-    required this.name,
-    required this.idJail,
+    this.id,
+    this.name,
+    this.idJail,
     this.personCase,
-    required this.idPk,
-    required this.idType,
+    this.idPk,
+    this.idType,
     this.dateDisposition,
-    required this.numberTpp,
+    this.numberTpp,
     this.dateTpp,
     this.dateSend,
     this.dateStart,
@@ -38,9 +40,11 @@ class Person {
     this.description,
     this.createdAt,
     this.updatedAt,
-    required this.jail,
-    required this.type,
-    required this.pk,
+    this.isAbsen,
+    this.birthday,
+    this.jail,
+    this.type,
+    this.pk,
   });
 
   factory Person.fromJson(Map<String, dynamic> json) => Person(
@@ -60,6 +64,8 @@ class Person {
         description: json["description"],
         createdAt: json["created_at"],
         updatedAt: json["updated_at"],
+        isAbsen: json["isAbsen"],
+        birthday: json["birthday"],
         jail: Jail.fromJson(json["jail"]),
         type: Jail.fromJson(json["type"]),
         pk: Jail.fromJson(json["pk"]),
@@ -82,8 +88,10 @@ class Person {
         "description": description,
         "created_at": createdAt,
         "updated_at": updatedAt,
-        "jail": jail.toJson(),
-        "type": type.toJson(),
-        "pk": pk.toJson(),
+        "isAbsen": isAbsen,
+        "birthday": birthday,
+        "jail": jail?.toJson(),
+        "type": type?.toJson(),
+        "pk": pk?.toJson(),
       };
 }
